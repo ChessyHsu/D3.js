@@ -1,8 +1,8 @@
 function f(){
 	var width = 1024;
 	var height = 768;
-	var ctrl = d3.select("body").append("svg").attr("width", width).attr("height", height);
-	d3.csv("./weather.csv", 
+	var ctrl = d3.select("content").append("svg").attr("width", width).attr("height", height);
+	d3.csv("https://ChessyHsu.github.io/D3.js/weather.csv", 
 		function(data)
 		{
 			var ln = data.length;

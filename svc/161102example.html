@@ -1,0 +1,71 @@
+<!--2016.11.2-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<meta charset="UTF-8" />
+  	<script src="https://d3js.org/d3.v4.min.js"></script>
+  	<title>Document</title>
+</head>
+<body>
+<script>
+var cdata = [
+{cx:100, cy:150, r:50, color:"orange"},
+{cx:200, cy:150, r:50, color:"yellow"},
+{cx:300, cy:150, r:50, color:"green"},
+{cx:100, cy:100, r:50, color:"#ff0000"}];//red
+
+	//OBJECT!!! NOT VARIABLE
+	/*
+	物件裡有 變數 函數 性質
+	*/
+	//creating a canvas
+	//select選在<body></body>之間append插入svg畫布
+	var svgctrl = d3.select("body").
+					 append("svg").
+					 attr("width", 500).
+					 attr("height", 500);
+	//original way of creating a circle
+	var maddc = svgctrl.append("circle").
+						attr("cx", 400).
+						attr("cy", 400).
+						attr("r", 50).
+						attr("fill", "#000000");//black
+	//for loop way of creating circles
+	/*
+	selectAll會選所有已經存在的circle 
+	把data給它 但他已經有attribute了 就不動它
+	如果不存在就自己創造circle並給他attribute
+	data是要放入的資料
+	enter()把資料放入svgctrl
+	append增加circle
+	*/
+	var addDataToC = svgctrl.selectAll("circle").//select all circles
+							 data(cdata).
+							 enter().
+							 append("circle");
+	
+	var addC = addDataToC.
+	attr("cx", 
+		function(d)
+		{
+			console.log(d.cx);//print to console
+			return d.cx;
+		}).
+	attr("cy", 
+		function(d)
+		{
+			return d.cy;
+		}).
+	attr("r", 
+		function(d)
+		{
+			return d.r;
+		}).
+	attr("fill",
+		function(d)
+		{
+			return d.color;
+		});
+</script>
+</body>
+</html>

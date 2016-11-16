@@ -1,3 +1,4 @@
+//2016.11.16
 function f(){
 	var width = 1024;
 	var height = 768;
